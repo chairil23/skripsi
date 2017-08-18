@@ -15,6 +15,7 @@ class UserTransformer extends TransformerAbstract
     return [
       'name'        => $user->name,
       'email'       => $user->email,
+      'password'    => $user->password,
       'reagistered' => $user->created_at->diffForHumans()
     ];
   }

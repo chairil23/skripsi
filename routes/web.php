@@ -16,3 +16,16 @@
 Route::get('/{any}', function(){
     return view('welcome');
 })->where(['any' => '.*']);
+
+// Route::get('/freelancer-dashboard', function () {
+//     return view('freelancer.dashboard');
+// });
+// Route::resource('/freelance/products', 'FreelancerController');
+// Route::post('freelance/products/search', 'FreelancerController@search');
+// Route::resource('freelance/authfreelancer', 'AuthFreelancerController');
+// Route::group(array('prefix'=>'api'),function(){
+// 	Route::resource('freelance/products','FreelancerController');
+// });
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');

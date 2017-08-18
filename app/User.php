@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'api_token', 'photo', 'address', 'gender', 'phone', 'status',
+        'password', 'remember_token', 'api_token', 'photo', 'address', 'gender', 'phone', 
     ];
 
     public static function initialize(){
@@ -32,12 +32,7 @@ class User extends Authenticatable
         'photo'   => '',
         'address' => '',
         'gender'  => 0,
-        'phone'   => '',
-        'status'  => ''
+        'phone'   => ''
       ];
-    }
-
-    public function posts(){
-      return $this->hasMany(Post::class);
     }
 }

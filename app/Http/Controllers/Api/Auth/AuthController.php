@@ -21,18 +21,13 @@ class AuthController extends Controller
         'name'     => $request->name,
         'email'    => $request->email,
         'password' => bcrypt($request->password),
-        'api_token'=> bcrypt($request->email)
+        'api_token'=> str_random(60)
       ]);
 
-      $response = fractal()
-        ->item($user)
-        ->transformWith(new UserTransformer)
-        ->addMeta([
-          'token' => $user->api_token,
-        ])
-        ->toArray();
-
-        return response()->json($response, 201);
+        return response()->json([
+          'registered' => true,
+          'message' => "Registrasi telah berhasil... silahkan konfirmasi email anda...."
+          ]);
 
     }
 
@@ -48,13 +43,12 @@ class AuthController extends Controller
 
       $user = $user->find(Auth::user()->id);
 
-      return fractal()
-        ->item($user)
-        ->transformWith(new UserTransformer)
-        ->addMeta([
-          'token' => $user->api_token,
-        ])
-        ->toArray();
+      return response()
+        ->json([
+          'authenticated' => true,
+          'user_id' => $user->id,
+          'api_token' => $user->api_token
+        ]);
 
     }
 

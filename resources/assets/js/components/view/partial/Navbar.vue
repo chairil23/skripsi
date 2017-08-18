@@ -90,3 +90,16 @@
 		</div><!--/header-bottom-->
 	</header>	
 </template>
+<script>
+import Auth from '../../../store/auth'
+export default {
+	data(){
+		return{
+			
+		}
+	},
+  computed(){
+
+  }
+}
+</script>

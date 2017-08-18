@@ -1,0 +1,55 @@
+<template>
+    <section>
+        <slider></slider>
+        <sidebar></sidebar>
+        <div class="col-sm-9 padding-right">        
+            <div class="features_items"><!--features_items-->
+                <h2 class="title text-center">Features Items</h2>
+                <div v-for="product in subcategories.products.data" :key="product.id" class="col-sm-4">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="images/home/product1.jpg" alt="" />
+                                    <h2>Rp{{product.hrg_awal}}</h2>
+                                    <p>{{product.jdl_Pdk}}</p>
+                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                </div>										
+                        </div>
+                        <div class="choose">
+                            <ul class="nav nav-pills nav-justified">
+                                <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>						
+            </div><!--features_items-->						
+        </div>
+    </section>
+</template>
+<script>
+import {get} from '../../../helper/api'
+import Sidebar from '../partial/Sidebar'
+import Slider from '../partial/Slider'
+export default {
+    components:{
+        Sidebar
+    },
+    data(){
+        return{
+            subcategories:{},
+            error:{},
+            isProcessing:false,
+            url: `api/subcategory/${this.$route.params.id}`
+        }
+    },
+    created(){        
+        get(`/api/subcategory/${this.$route.params.id}`)
+            .then((res) => {
+                this.subcategories = res.data.data
+                console.log(this.subcategories)
+            })
+    }
+}
+</script>
+

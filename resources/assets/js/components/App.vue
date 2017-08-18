@@ -2,8 +2,10 @@
     <div>
         
         <navbar></navbar>      
-              
-        <router-view></router-view>
+        <div class="container">      
+        <router-view></router-view> 
+        <router-view name="main"></router-view>
+        </div>
                       
         <footers></footers>
         
