@@ -20,8 +20,7 @@ class AuthController extends Controller
       $user = $user->create([
         'name'     => $request->name,
         'email'    => $request->email,
-        'password' => bcrypt($request->password),
-        'api_token'=> str_random(60)
+        'password' => bcrypt($request->password)
       ]);
 
         return response()->json([
@@ -41,12 +40,14 @@ class AuthController extends Controller
         return response()->json(['error' => 'Your credential is wrong'], 401);
       }
 
-      $user = $user->find(Auth::user()->id);
+      $user = $user->find(Auth::user()->id);   
+      $user->generateToken();
 
       return response()
         ->json([
           'authenticated' => true,
           'user_id' => $user->id,
+          'status' => $user->status,
           'api_token' => $user->api_token
         ]);
 

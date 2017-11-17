@@ -33,12 +33,11 @@
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><router-link to="/checkout"><i class="fa fa-crosshairs"></i> Checkout</router-link></li>
+							<ul class="nav navbar-nav">								
 								<li><router-link to="/cart"><i class="fa fa-shopping-cart"></i> Cart</router-link></li>
-								<li><router-link to="/login"><i class="fa fa-lock"></i> Login</router-link></li>
+								<li v-show="isLoggedIn"><a href="#"><i class="fa fa-user"></i> Account</a></li>
+								<li v-if="isLoggedIn"><a href="#" @click="logout"><i class="fa fa-lock"></i> Logout</a></li>
+								<li v-else><router-link to="/login"><i class="fa fa-lock"></i> Login</router-link></li>
 							</ul>
 						</div>
 					</div>
@@ -91,15 +90,27 @@
 	</header>	
 </template>
 <script>
-import Auth from '../../../store/auth'
 export default {
 	data(){
-		return{
-			
+		return {
+			isLoggedIn: true
 		}
+		
 	},
-  computed(){
-
-  }
+	beforeCreate(){
+		console.log(this.$session.getAll())
+		
+		console.log(this.isLoggedIn)
+	},
+	computed: {
+		
+	},
+	methods: {
+		logout() {
+			this.$session.destroy()
+			this.$router.push('/')
+			this.isLoggedIn= false
+		}
+	}
 }
 </script>

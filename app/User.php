@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'api_token', 'photo', 'address', 'gender', 'phone', 
+        'name', 'email', 'password', 'api_token', 'status', 'photo', 'address', 'gender', 'phone', 
     ];
 
     /**
@@ -34,5 +34,12 @@ class User extends Authenticatable
         'gender'  => 0,
         'phone'   => ''
       ];
+    }
+
+    public function generateToken(){
+        $this->api_token = str_random(60);
+        $this->save();
+
+        return $this->api_token;
     }
 }

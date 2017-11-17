@@ -1,10 +1,11 @@
 <template>
     <div>
         
-        <navbar></navbar>      
-        <div class="container">      
-        <router-view></router-view> 
-        <router-view name="main"></router-view>
+        <headers/>
+        <slider></slider>      
+        <div class="container">
+            <side-bar></side-bar>      
+            <router-view></router-view>             
         </div>
                       
         <footers></footers>
@@ -13,13 +14,15 @@
 </template>
 
 <script>
-    import Navbar from './view/partial/Navbar.vue'
+    import Headers from './view/partial/Header.vue'
     import Footers from './view/partial/Footerss.vue'
     import SideBar from './view/partial/Sidebar.vue'
     import Contents from './view/partial/Contents.vue'
+    import Slider from './view/partial/Slider'
     export default {
         components: {
-            Navbar,
+            Headers,
+            Slider,
             SideBar,
             Contents,
             Footers

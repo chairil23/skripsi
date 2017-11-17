@@ -1,6 +1,5 @@
 <template>
     <section>
-        <sidebar></sidebar>
         <div class="container">
             <div class="col-sm-9 padding-right">
                     <div class="product-details"><!--product-details-->
@@ -204,12 +203,8 @@
     </section>
 </template>
 <script>
-import Sidebar from '../partial/Sidebar'
 import {get} from '../../../helper/api'
-export default {
-    components:{
-        Sidebar
-    },
+export default {   
     data(){
         return {
             product: {}

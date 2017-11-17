@@ -1,7 +1,5 @@
 <template>
     <section>
-        <slider></slider>
-        <sidebar></sidebar>
         <div class="col-sm-9 padding-right">        
             <div class="features_items"><!--features_items-->
                 <h2 class="title text-center">Features Items</h2>
@@ -29,12 +27,7 @@
 </template>
 <script>
 import {get} from '../../../helper/api'
-import Sidebar from '../partial/Sidebar'
-import Slider from '../partial/Slider'
-export default {
-    components:{
-        Sidebar
-    },
+export default {    
     data(){
         return{
             subcategories:{},

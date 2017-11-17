@@ -40,8 +40,6 @@
 
 <script>
 import {get, post} from '../../../helper/api'
-import Flash from '../../../helper/flash'
-import Auth from '../../../store/auth'
 // import {InvalidInputHelper} from '../../../helper/validator'
 export default {
   	data(){
@@ -84,14 +82,16 @@ export default {
 		},
 
 		login(){
+			this.$session.clear()
 			this.isProcessing = true
 			this.error = {}
 			post('api/auth/login', this.formLogin)
 				.then((res) => {
 					if(res.data.authenticated){
-						Auth.set(res.data.user_id, res.data.api_token)
+						this.$session.start()
+						this.$session.set('token', res.data.api_token)
 						this.$router.push('/')
-					}
+					}				
 					this.isProcessing = true
 				})
 				.catch((err) => {
