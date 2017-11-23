@@ -23,6 +23,7 @@ class ProductTableSeeder extends Seeder
             'jdl_Pdk' => $faker->sentence,
             'freelancer_id' => $i,
             'subcategory_id' => mt_rand(1, 10),
+            'category_id'  => mt_rand(1, 10),
             'hrg_awal' => mt_rand(10000, 100000),
             'hrg_promo' => 'hrg_awal'-5000,
             'description' => $faker->paragraph(mt_rand(10, 100))

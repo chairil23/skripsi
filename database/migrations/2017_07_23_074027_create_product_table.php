@@ -17,6 +17,7 @@ class CreateProductTable extends Migration
             $table->increments('id');
             $table->integer('freelancer_id')->unsigned();
             $table->integer('subcategory_id')->unsigned();
+            $table->integer('category_id')->unsigned();
             $table->string('jdl_Pdk');
             $table->integer('hrg_awal');
             $table->integer('hrg_promo');

@@ -27,10 +27,8 @@ class RequestsProduct extends FormRequest
             'jdl_Pdk'=>'required',
             'hrg_awal'=>'required',
             'hrg_promo'=>'required',
-            'kategori'=>'required',
-            'sub_kategori'=>'required',
-            'description'=>'required',
-            'foto'=>'required'
+            'description'=>'required'
+           
         ];
     }
 }

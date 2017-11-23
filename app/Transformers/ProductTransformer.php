@@ -27,7 +27,7 @@ class ProductTransformer extends TransformerAbstract
             'jdl_Pdk' => $product->jdl_Pdk,
             'hrg_awal' => $product->hrg_awal,   
             'hrg_promo' => $product->hrg_promo,
-            'kategori' => $product->kategori,
+            'sub_category' => $product->subcategory_id,
             'description' => $product->description,
             'posted' => $product->created_at
         ];

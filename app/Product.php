@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     //
-    protected  $fillable = ['id','jdl_Pdk','hrg_awal','hrg_promo','kategori','sub_kategori','description'];
+    protected  $fillable = ['id','freelancer_id','jdl_Pdk','hrg_awal','hrg_promo','category_id','subcategory_id','description'];
 
     public function freelancer(){
     return $this->belongsTo(Freelancer::class);
@@ -26,7 +26,6 @@ class Product extends Model
             'jdl_Pdk' => ' ',
             'hrg_awal' => 0,
             'hrg_promo' => 0,
-            'kategori' => ' ',
             'description' => ' ',            
             'images' => [
                 Image::form(),

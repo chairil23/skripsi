@@ -9,6 +9,8 @@ use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Manager;
 use Response;
 use App\Product;
+use App\User;
+use Auth;
 use App\Transformers\ProductTransformer;
 
 class ProductController extends Controller
@@ -69,25 +71,24 @@ class ProductController extends Controller
      */
     public function store(RequestsProduct $request)
     {
-        $filename = Input::file('foto')->getClientOriginalName();
-        Input::file('foto')->move(public_path().'/upload/',$filename);
+        // $filename = Input::file('foto')->getClientOriginalName();
+        // Input::file('foto')->move(public_path().'/upload/',$filename);
+        $freelancer = User::find(Auth::user()->id);
         $data = $request->all();
         $data = array(
             'jdl_Pdk'=>Input::get('jdl_Pdk'),
+            'freelancer_id' => $freelancer->id,
             'hrg_awal'=>Input::get('hrg_awal'),
             'hrg_promo'=>Input::get('hrg_promo'),
-            'kategori'=>Input::get('kategori'),
-            'sub_kategori'=>Input::get('sub_kategori'),
-            'description'=>Input::get('description'),
-            'foto'=>$filename
+            'category_id'=>Input::get('category_id'),
+            'subcategory_id'=>Input::get('subcategory_id'),
+            'description'=>Input::get('description')
         );
+        
         Product::create($data);
-       if(!$success)
-        {
-             return Response::json("error saving",500);
-        }
+       
  
-        return Response::json("success",201);
+        return response()->json(['success', $freelancer->id], 200);
     }
 
     /**
